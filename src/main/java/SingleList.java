@@ -36,7 +36,36 @@ public class SingleList {
      */
     public void addAt(final int position,
                       final String value) {
-        throw new IllegalStateException("Not implemented yet");
+        int size = this.size();
+        if (position < 0 || position > size + 1) {
+            throw new IllegalArgumentException();
+        }
+
+        Node newNode = new Node(value);
+
+        if (position == 0) {
+            if (head != null) {
+                newNode.next = this.head;
+            }
+            this.head = newNode;
+        } else {
+            Node currNode = this.head;
+            Node previous = null;
+
+            int idx = 0;
+
+            while (idx < position) {
+                previous = currNode;
+                currNode = currNode.next;
+                if (currNode == null) {
+                    break;
+                }
+                idx++;
+            }
+            newNode.next = currNode;
+            previous.next = newNode;
+        }
+
     }
 
     /**

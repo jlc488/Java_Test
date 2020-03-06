@@ -104,7 +104,7 @@ class SingleListTest {
         addAtBad(list, -2, "123", "position must be >= 0, was: -2");
     }
 
-    @Ignore
+    @Test
     void addAt() {
         final SingleList listA;
         final SingleList listB;

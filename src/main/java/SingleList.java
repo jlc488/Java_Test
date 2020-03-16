@@ -87,7 +87,36 @@ public class SingleList {
      * @see #size
      */
     public String removeAt(final int position) {
-        throw new IllegalStateException("Not implemented yet");
+        int size = this.size();
+        int idx = 0;
+
+
+        if (position < 0) { //if position brought in is smaller than 0 exception
+            throw new IllegalArgumentException("position must be >= 0, was: " + position);
+        }
+        if (position > size + 1) { // if position is > size of list then exception
+            throw new IllegalArgumentException("position must be <= 0, was: " + position);
+        }
+
+        Node n = head;
+        Node parent = null;
+        String data = n.value;
+
+        if (position == 0) {
+            head = head.next;
+        } else {
+            while (n != null && idx < position) {
+                parent = n;
+                n = n.next;
+                idx++;
+            }
+
+            data = n.value;
+            parent.next = n.next;
+            n = null;
+        }
+        return data;
+
     }
 
     /**
